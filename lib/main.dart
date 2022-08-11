@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
           floatingActionButtonTheme: const FloatingActionButtonThemeData(
             backgroundColor: primaryColor,
           ),
+          appBarTheme: const AppBarTheme(backgroundColor: primaryColor),
         ),
         home: const HomePage(),
       );

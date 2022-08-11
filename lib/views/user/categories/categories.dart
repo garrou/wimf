@@ -5,6 +5,9 @@ import 'package:wimf/models/category.dart';
 import 'package:wimf/models/guard.dart';
 import 'package:wimf/models/http_response.dart';
 import 'package:wimf/services/category_service.dart';
+import 'package:wimf/styles/style.dart';
+import 'package:wimf/views/user/categories/category.dart';
+import 'package:wimf/widgets/error.dart';
 import 'package:wimf/widgets/loading.dart';
 
 class CategoriesPage extends StatefulWidget {
@@ -41,28 +44,59 @@ class _CategoriesPageState extends State<CategoriesPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Catégories',
+            style: textStyle,
+          ),
+        ),
         body: FutureBuilder<List<Category>>(
           future: _categories,
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              // TODO: error
+              return const AppError();
             } else if (snapshot.hasData) {
-              return GridView.count(
-                crossAxisCount: 2,
+              return ListView(
                 children: <Widget>[
                   for (Category category in snapshot.data!)
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      elevation: 10,
-                      child: Image.asset('assets/${category.image}'),
-                    )
+                    CategoryTile(category: category)
                 ],
               );
             }
             return const AppLoading();
           },
+        ),
+      );
+}
+
+class CategoryTile extends StatelessWidget {
+  final Category category;
+  const CategoryTile({Key? key, required this.category}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: Card(
+          elevation: 10,
+          child: InkWell(
+            onTap: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      CategoryPage(category: category),
+                ),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ListTile(
+                leading: Image.asset('assets/${category.image}'),
+                title: Text(category.name, style: textStyle),
+                trailing: const Icon(Icons.arrow_forward_ios_outlined),
+              ),
+            ),
+          ),
         ),
       );
 }

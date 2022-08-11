@@ -1,7 +1,7 @@
 class Category {
   final int id;
-  final int name;
-  final int image;
+  final String name;
+  final String image;
 
   Category(this.id, this.name, this.image);
 
