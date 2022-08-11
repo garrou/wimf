@@ -11,23 +11,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-      title: 'WIMF',
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: primaryColor,
-        backgroundColor: Colors.white,
-        textSelectionTheme: const TextSelectionThemeData(
-          selectionHandleColor: primaryColor, // Change bubble to red
-          cursorColor: primaryColor,
+        title: 'WIMF',
+        theme: ThemeData(
+          brightness: Brightness.light,
+          primaryColor: primaryColor,
+          backgroundColor: Colors.white,
+          textSelectionTheme: const TextSelectionThemeData(
+            selectionHandleColor: primaryColor, // Change bubble to red
+            cursorColor: primaryColor,
+          ),
+          snackBarTheme: const SnackBarThemeData(
+            backgroundColor: primaryColor,
+            actionTextColor: Colors.white,
+            contentTextStyle: TextStyle(color: Colors.white),
+          ),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            backgroundColor: primaryColor,
+          ),
         ),
-        snackBarTheme: const SnackBarThemeData(
-          backgroundColor: primaryColor,
-          actionTextColor: Colors.white,
-          contentTextStyle: TextStyle(color: Colors.white),
-        ),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: primaryColor,
-        ),
-      ),
-      home: const HomePage());
+        home: const HomePage(),
+      );
 }

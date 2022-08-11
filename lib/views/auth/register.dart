@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wimf/models/http_response.dart';
 import 'package:wimf/services/auth_service.dart';
 import 'package:wimf/styles/style.dart';
@@ -19,9 +18,8 @@ class RegisterPage extends StatelessWidget {
           padding: const EdgeInsets.only(top: 30),
           child: ListView(
             children: <Widget>[
-              SvgPicture.asset(
-                'assets/walk.svg',
-                semanticsLabel: 'Logo',
+              Image.asset(
+                'assets/register.png',
                 height: 200,
               ),
               Padding(

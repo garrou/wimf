@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const Color primaryColor = Color.fromRGBO(27, 130, 170, 1.0);
+const Color primaryColor = Colors.black;
 
 ButtonStyle roundedStyle = ButtonStyle(
   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -15,4 +15,4 @@ ButtonStyle roundedStyle = ButtonStyle(
 
 TextStyle textStyle = GoogleFonts.roboto(fontSize: 20);
 TextStyle titleTextStyle = GoogleFonts.roboto(fontSize: 30);
-TextStyle linkTextStyle = GoogleFonts.roboto(fontSize: 20, color: Colors.blue);
+TextStyle linkTextStyle = GoogleFonts.roboto(fontSize: 20, color: primaryColor);
