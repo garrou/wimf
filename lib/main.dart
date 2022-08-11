@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wimf/styles/style.dart';
 import 'package:wimf/views/home/home.dart';
 
 void main() {
@@ -12,8 +13,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
       title: 'WIMF',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        brightness: Brightness.light,
+        primaryColor: primaryColor,
+        backgroundColor: Colors.white,
+        textSelectionTheme: const TextSelectionThemeData(
+          selectionHandleColor: primaryColor, // Change bubble to red
+          cursorColor: primaryColor,
+        ),
+        snackBarTheme: const SnackBarThemeData(
+          backgroundColor: primaryColor,
+          actionTextColor: Colors.white,
+          contentTextStyle: TextStyle(color: Colors.white),
+        ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: primaryColor,
+        ),
       ),
-      home: const HomePage()
-    );
+      home: const HomePage());
 }

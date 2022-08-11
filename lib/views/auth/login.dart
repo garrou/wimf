@@ -1,46 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wimf/models/http_response.dart';
+import 'package:wimf/services/auth_service.dart';
 import 'package:wimf/styles/style.dart';
+import 'package:wimf/utils/storage.dart';
 import 'package:wimf/utils/validator.dart';
 import 'package:wimf/views/auth/register.dart';
+import 'package:wimf/views/user/home.dart';
 import 'package:wimf/widgets/button.dart';
 import 'package:wimf/widgets/link.dart';
+import 'package:wimf/widgets/snackbar.dart';
 import 'package:wimf/widgets/textfield.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({ Key? key }) : super(key: key);
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  @override
-  Widget build(BuildContext context) => Scaffold(body: Padding(
-        padding: const EdgeInsets.only(top: 20),
-        child: ListView(
-          children: <Widget>[
-            SvgPicture.asset(
-              'assets/walk.svg',
-              semanticsLabel: 'Logo',
-              height: 200,
-            ),
-            Padding(
-              child: Text(
-                'Se connecter',
-                style: titleTextStyle,
-                textAlign: TextAlign.center,
+  Widget build(BuildContext context) => Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: ListView(
+            children: <Widget>[
+              SvgPicture.asset(
+                'assets/walk.svg',
+                semanticsLabel: 'Logo',
+                height: 200,
               ),
-              padding: const EdgeInsets.only(top: 10),
-            ),
-            const LoginForm()
-          ],
+              Padding(
+                child: Text(
+                  'Se connecter',
+                  style: titleTextStyle,
+                  textAlign: TextAlign.center,
+                ),
+                padding: const EdgeInsets.only(top: 10),
+              ),
+              const LoginForm()
+            ],
+          ),
         ),
-      ),);
+      );
 }
 
 class LoginForm extends StatefulWidget {
-  const LoginForm({ Key? key }) : super(key: key);
+  const LoginForm({Key? key}) : super(key: key);
 
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -49,7 +51,7 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final _keyForm = GlobalKey<FormState>();
 
-  final _email = TextEditingController();
+  final _username = TextEditingController();
   final _password = TextEditingController();
 
   @override
@@ -63,10 +65,10 @@ class _LoginFormState extends State<LoginForm> {
               AppTextField(
                 keyboardType: TextInputType.text,
                 label: "Nom d'utilisateur",
-                textfieldController: _email,
-                validator: (value) => lengthValidator(value, 3, 255),
+                textfieldController: _username,
+                validator: fieldValidator,
                 icon: Icon(
-                  Icons.alternate_email_outlined,
+                  Icons.person_outline_outlined,
                   color: Theme.of(context).primaryColor,
                 ),
               ),
@@ -102,21 +104,20 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void _login() async {
-    /*
     final HttpResponse response =
-        await AuthService().login(_email.text.trim(), _password.text.trim());
+        await AuthService().login(_username.text.trim(), _password.text.trim());
 
     if (response.success()) {
       Storage.setToken(response.content());
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (BuildContext context) => const MemberHome(),
+            builder: (BuildContext context) => const UserHomePage(),
           ),
           (route) => false);
     } else {
+      _password.text = '';
       snackBar(context, response.message());
     }
-    */
   }
 }

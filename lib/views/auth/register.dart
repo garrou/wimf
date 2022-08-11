@@ -1,46 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wimf/models/http_response.dart';
+import 'package:wimf/services/auth_service.dart';
 import 'package:wimf/styles/style.dart';
 import 'package:wimf/utils/validator.dart';
 import 'package:wimf/views/auth/login.dart';
 import 'package:wimf/widgets/button.dart';
 import 'package:wimf/widgets/link.dart';
+import 'package:wimf/widgets/snackbar.dart';
 import 'package:wimf/widgets/textfield.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({ Key? key }) : super(key: key);
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
-}
-
-class _RegisterPageState extends State<RegisterPage> {
-  @override
-  Widget build(BuildContext context) => Scaffold(body: Padding(
-        padding: const EdgeInsets.only(top: 30),
-        child: ListView(
-          children: <Widget>[
-            SvgPicture.asset(
-              'assets/walk.svg',
-              semanticsLabel: 'Logo',
-              height: 200,
-            ),
-            Padding( 
-              child: Text(
-                "S'inscrire",
-                style: titleTextStyle,
-                textAlign: TextAlign.center,
+  Widget build(BuildContext context) => Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: ListView(
+            children: <Widget>[
+              SvgPicture.asset(
+                'assets/walk.svg',
+                semanticsLabel: 'Logo',
+                height: 200,
               ),
-              padding: const EdgeInsets.only(top: 10),
-            ),
-            const RegisterForm()
-          ],
+              Padding(
+                child: Text(
+                  "S'inscrire",
+                  style: titleTextStyle,
+                  textAlign: TextAlign.center,
+                ),
+                padding: const EdgeInsets.only(top: 10),
+              ),
+              const RegisterForm()
+            ],
+          ),
         ),
-      ),);
+      );
 }
 
 class RegisterForm extends StatefulWidget {
-  const RegisterForm({ Key? key }) : super(key: key);
+  const RegisterForm({Key? key}) : super(key: key);
 
   @override
   State<RegisterForm> createState() => _RegisterFormState();
@@ -118,9 +118,8 @@ class _RegisterFormState extends State<RegisterForm> {
   }
 
   void _register() async {
-    /*
-    HttpResponse response = await AuthService().register(UserRegister(
-        _username.text, _password.text, _confirm.text));
+    HttpResponse response = await AuthService()
+        .register(_username.text, _password.text, _confirm.text);
 
     if (response.success()) {
       Navigator.push(
@@ -130,7 +129,8 @@ class _RegisterFormState extends State<RegisterForm> {
         ),
       );
     }
+    _password.text = '';
+    _confirm.text = '';
     snackBar(context, response.message());
-    */
   }
 }
