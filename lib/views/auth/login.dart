@@ -20,10 +20,7 @@ class LoginPage extends StatelessWidget {
           padding: const EdgeInsets.only(top: 20),
           child: ListView(
             children: <Widget>[
-              Image.asset(
-                'assets/login.png',
-                height: 200,
-              ),
+              Image.asset('assets/login.png', height: 200),
               Padding(
                 child: Text(
                   'Se connecter',

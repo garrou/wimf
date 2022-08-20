@@ -34,10 +34,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Image.asset(
-                  'assets/logo.png',
-                  height: 300,
-                ),
+                Image.asset('assets/logo.png', height: 300),
                 Padding(
                   child: Text("What's In My Freezer ?", style: titleTextStyle),
                   padding: const EdgeInsets.all(20),

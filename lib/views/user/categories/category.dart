@@ -15,10 +15,7 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(
-            widget.category.name,
-            style: textStyle,
-          ),
+          title: Text(widget.category.name, style: textStyle),
         ),
         body: Column(
           children: const <Widget>[

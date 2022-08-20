@@ -1,9 +1,9 @@
+import 'package:wimf/main.dart';
 import 'package:wimf/models/http_response.dart';
 import 'package:wimf/models/interceptor.dart';
 
 import 'package:http/http.dart';
 import 'package:http_interceptor/http/http.dart';
-import 'package:wimf/utils/constant.dart';
 
 class CategoryService {
   final Client client = InterceptedClient.build(

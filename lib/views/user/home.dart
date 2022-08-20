@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wimf/styles/style.dart';
 import 'package:wimf/views/user/add/add_food.dart';
 import 'package:wimf/views/user/categories/categories.dart';
+import 'package:wimf/views/user/profile/profile.dart';
+import 'package:wimf/views/user/search/search.dart';
 
 class UserHomePage extends StatefulWidget {
   const UserHomePage({Key? key}) : super(key: key);
@@ -15,6 +16,8 @@ class _UserHomePageState extends State<UserHomePage> {
   final _screens = [
     const CategoriesPage(),
     const AddFoodPage(),
+    const SearchPage(),
+    const ProfilePage(),
   ];
 
   @override
@@ -23,7 +26,7 @@ class _UserHomePageState extends State<UserHomePage> {
         bottomNavigationBar: BottomNavigationBar(
             currentIndex: _current,
             onTap: (index) => setState(() => _current = index),
-            backgroundColor: primaryColor,
+            backgroundColor: Theme.of(context).primaryColor,
             unselectedItemColor: Colors.white60,
             selectedItemColor: Colors.white,
             type: BottomNavigationBarType.fixed,
@@ -35,6 +38,14 @@ class _UserHomePageState extends State<UserHomePage> {
               BottomNavigationBarItem(
                 icon: Icon(Icons.library_add_outlined),
                 label: 'Ajouter',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.search_outlined),
+                label: 'Chercher',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline_outlined),
+                label: 'Profil',
               ),
             ]),
       );

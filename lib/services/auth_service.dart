@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:wimf/main.dart';
 import 'package:wimf/models/http_response.dart';
-import 'package:wimf/utils/constant.dart';
 
 class AuthService {
   Future<HttpResponse> login(String username, String password) async {

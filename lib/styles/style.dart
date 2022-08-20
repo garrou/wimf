@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-const Color primaryColor = Colors.black;
+import 'package:wimf/main.dart';
 
 ButtonStyle roundedStyle = ButtonStyle(
   shape: MaterialStateProperty.all<RoundedRectangleBorder>(

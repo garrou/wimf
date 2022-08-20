@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wimf/styles/style.dart';
 import 'package:wimf/views/home/home.dart';
+
+const Color primaryColor = Colors.black;
+const String endpoint = "http://10.0.2.2:8080/api";
 
 void main() {
   runApp(const MyApp());

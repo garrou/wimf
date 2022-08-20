@@ -39,6 +39,7 @@ dependencies:
   flutter_guards: ^0.0.2
   http_interceptor: ^1.0.2
   intl: ^0.17.0
+  syncfusion_flutter_datepicker: ^19.4.56
 
 dev_dependencies:
   flutter_test:
