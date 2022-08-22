@@ -17,7 +17,7 @@ class AppError extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Image.asset('assets/logo.png'),
+                Image.asset('assets/warning.png'),
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Text('Erreur de connexion', style: titleTextStyle),

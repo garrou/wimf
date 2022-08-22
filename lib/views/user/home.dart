@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wimf/views/user/add/add_food.dart';
 import 'package:wimf/views/user/categories/categories.dart';
 import 'package:wimf/views/user/profile/profile.dart';
 import 'package:wimf/views/user/search/search.dart';
@@ -15,7 +14,6 @@ class _UserHomePageState extends State<UserHomePage> {
   int _current = 0;
   final _screens = [
     const CategoriesPage(),
-    const AddFoodPage(),
     const SearchPage(),
     const ProfilePage(),
   ];
@@ -34,10 +32,6 @@ class _UserHomePageState extends State<UserHomePage> {
               BottomNavigationBarItem(
                 icon: Icon(Icons.library_books_outlined),
                 label: 'Catégories',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.library_add_outlined),
-                label: 'Ajouter',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.search_outlined),

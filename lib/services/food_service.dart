@@ -14,9 +14,33 @@ class FoodService {
     ],
   );
 
+  Future<HttpResponse> getAll() async {
+    final Response response = await client.get(Uri.parse('$endpoint/foods/'));
+    return HttpResponse(response);
+  }
+
   Future<HttpResponse> create(Food food) async {
     final Response response = await client.post(Uri.parse('$endpoint/foods/'),
         body: jsonEncode(food));
     return HttpResponse(response);
+  }
+
+  Future<HttpResponse> update(Food food) async {
+    final Response response =
+        await client.put(Uri.parse('$endpoint/foods/'), body: jsonEncode(food));
+    return HttpResponse(response);
+  }
+
+  Future<HttpResponse> getByCategory(int id) async {
+    final Response response =
+        await client.get(Uri.parse('$endpoint/categories/$id/foods'));
+    return HttpResponse(response);
+  }
+
+  Future<List<Food>> search(String query) async {
+    final Response res =
+        await client.get(Uri.parse('$endpoint/foods/search?q=$query'));
+    final response = HttpResponse(res);
+    return createFoods(response.content());
   }
 }

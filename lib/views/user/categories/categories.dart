@@ -45,10 +45,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Catégories',
-            style: textStyle,
-          ),
+          title: Text('Catégories', style: textStyle),
         ),
         body: FutureBuilder<List<Category>>(
           future: _categories,

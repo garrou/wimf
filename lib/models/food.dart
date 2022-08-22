@@ -4,15 +4,15 @@ import 'package:wimf/utils/extensions.dart';
 class Food {
   final DateFormat _df = DateFormat('dd/MM/yyyy');
 
-  final int? id;
+  final int id;
   final String name;
   final int categoryId;
   final int quantity;
   final String details;
   final DateTime freezeAt;
 
-  Food(this.name, this.categoryId, this.quantity, this.details, this.freezeAt,
-      [this.id]);
+  Food(this.id, this.name, this.categoryId, this.quantity, this.details,
+      this.freezeAt);
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -29,7 +29,7 @@ class Food {
         categoryId = json['categoryId'],
         quantity = json['quantity'],
         details = json['details'],
-        freezeAt = json['freezeAt'];
+        freezeAt = DateTime.parse(json['freezeAt']);
 
   String formatFreezeAt() => _df.format(freezeAt);
 }
