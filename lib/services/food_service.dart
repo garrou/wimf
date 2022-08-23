@@ -43,4 +43,10 @@ class FoodService {
     final response = HttpResponse(res);
     return createFoods(response.content());
   }
+
+  Future<HttpResponse> delete(int id) async {
+    final Response response =
+        await client.delete(Uri.parse('$endpoint/foods/$id'));
+    return HttpResponse(response);
+  }
 }

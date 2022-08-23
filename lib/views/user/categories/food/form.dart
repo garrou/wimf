@@ -10,22 +10,69 @@ import 'package:wimf/widgets/button.dart';
 import 'package:wimf/widgets/snackbar.dart';
 import 'package:wimf/widgets/textfield.dart';
 
-class FormFoodPage extends StatelessWidget {
+class FormFoodPage extends StatefulWidget {
   final int categoryId;
   final Food? food;
   const FormFoodPage({Key? key, required this.categoryId, this.food})
       : super(key: key);
 
   @override
+  State<FormFoodPage> createState() => _FormFoodPageState();
+}
+
+class _FormFoodPageState extends State<FormFoodPage> {
+  @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text(
-            food != null ? 'Modifier ${food!.name}' : 'Ajouter un aliment',
+            widget.food != null
+                ? 'Modifier ${widget.food!.name}'
+                : 'Ajouter un aliment',
             style: textStyle,
           ),
+          actions: [
+            Visibility(
+              visible: widget.food != null,
+              child: IconButton(
+                onPressed: () => _showConfirmation(context),
+                icon: const Icon(Icons.delete_outline),
+              ),
+            )
+          ],
         ),
-        body: FoodForm(categoryId: categoryId, food: food),
+        body: FoodForm(categoryId: widget.categoryId, food: widget.food),
       );
+
+  Future _showConfirmation(BuildContext context) async => await showDialog(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          title: const Text('Supprimer cet aliment ?'),
+          content: const Text('La suppression de cet aliment sera définitive.'),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.delete_outline),
+              onPressed: _delete,
+            )
+          ],
+        ),
+      );
+
+  void _delete() async {
+    final HttpResponse response = await FoodService().delete(widget.food!.id);
+
+    if (response.success()) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => const UserHomePage(),
+        ),
+        ((route) => false),
+      );
+    }
+    snackBar(context, response.message());
+  }
 }
 
 class FoodForm extends StatefulWidget {

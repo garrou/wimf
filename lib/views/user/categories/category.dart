@@ -59,8 +59,8 @@ class _CategoryPageState extends State<CategoryPage> {
           },
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () async {
-            await Navigator.push(
+          onPressed: () {
+            Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (BuildContext context) =>

@@ -76,8 +76,8 @@ class CategoryTile extends StatelessWidget {
         child: Card(
           elevation: 10,
           child: InkWell(
-            onTap: () async {
-              await Navigator.push(
+            onTap: () {
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) =>
