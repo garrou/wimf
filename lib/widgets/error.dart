@@ -24,11 +24,12 @@ class AppError extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () => Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              const UserHomePage()),
-                      (route) => false),
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            const UserHomePage()),
+                    (route) => false,
+                  ),
                   icon: const Icon(Icons.refresh_outlined, size: 40),
                 )
               ],
