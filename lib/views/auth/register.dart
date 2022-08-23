@@ -18,10 +18,7 @@ class RegisterPage extends StatelessWidget {
           padding: const EdgeInsets.only(top: 30),
           child: ListView(
             children: <Widget>[
-              Image.asset(
-                'assets/register.png',
-                height: 200,
-              ),
+              Image.asset('assets/register.png', height: 200),
               Padding(
                 child: Text(
                   "S'inscrire",

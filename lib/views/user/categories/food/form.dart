@@ -82,6 +82,7 @@ class _FoodFormState extends State<FoodForm> {
                   color: Theme.of(context).primaryColor),
               keyboardType: TextInputType.text,
               validator: (value) => maxLengthValidator(value, 255),
+              maxLines: 5,
             ),
             Padding(
               child: Text(

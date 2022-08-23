@@ -78,10 +78,12 @@ class _ProfileTilesState extends State<ProfileTiles> {
             children: <Widget>[
               ProfileTile(
                 destination: UpdateUsernamePage(user: snapshot.data!),
+                icon: const Icon(Icons.person_outline),
                 title: 'Modifier votre identifiant',
               ),
               const ProfileTile(
                 destination: UpdatePasswordPage(),
+                icon: Icon(Icons.password_outlined),
                 title: 'Modifier votre mot de passe',
               )
             ],
@@ -93,8 +95,13 @@ class _ProfileTilesState extends State<ProfileTiles> {
 
 class ProfileTile extends StatelessWidget {
   final Widget destination;
+  final Icon icon;
   final String title;
-  const ProfileTile({Key? key, required this.destination, required this.title})
+  const ProfileTile(
+      {Key? key,
+      required this.destination,
+      required this.icon,
+      required this.title})
       : super(key: key);
 
   @override
@@ -113,6 +120,7 @@ class ProfileTile extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: ListTile(
+                leading: icon,
                 title: Text(title, style: textStyle),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
               ),

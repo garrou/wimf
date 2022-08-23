@@ -25,7 +25,7 @@ class FoodTile extends StatelessWidget {
               );
             },
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(5.0),
               child: ListTile(
                 leading: Text('${food.quantity}', style: textStyle),
                 title: Text(food.name, style: textStyle),

@@ -7,12 +7,11 @@ class AppLink extends StatelessWidget {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: TextButton(
-          child: child,
-          onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => destination))));
+  Widget build(BuildContext context) => TextButton(
+        child: child,
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => destination),
+        ),
+      );
 }

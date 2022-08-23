@@ -12,6 +12,12 @@ ButtonStyle roundedStyle = ButtonStyle(
   backgroundColor: MaterialStateProperty.all(primaryColor),
 );
 
-TextStyle textStyle = GoogleFonts.roboto(fontSize: 20);
-TextStyle titleTextStyle = GoogleFonts.roboto(fontSize: 30);
-TextStyle linkTextStyle = GoogleFonts.roboto(fontSize: 20, color: primaryColor);
+const double size = 15;
+
+TextStyle textStyle = GoogleFonts.roboto(fontSize: size);
+TextStyle titleTextStyle = GoogleFonts.roboto(fontSize: 25);
+TextStyle linkTextStyle = GoogleFonts.roboto(
+  fontSize: size,
+  color: primaryColor,
+  decoration: TextDecoration.underline,
+);
