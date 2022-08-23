@@ -5,7 +5,6 @@ import 'package:flutter_guards/flutter_guards.dart';
 import 'package:wimf/models/guard.dart';
 import 'package:wimf/styles/style.dart';
 import 'package:wimf/views/auth/login.dart';
-import 'package:wimf/views/home/discover.dart';
 import 'package:wimf/views/user/home.dart';
 import 'package:wimf/widgets/button.dart';
 
@@ -38,15 +37,6 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   child: Text("What's In My Freezer ?", style: titleTextStyle),
                   padding: const EdgeInsets.all(20),
-                ),
-                AppButton(
-                  content: 'Découvrir',
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => const DiscoverPage(),
-                    ),
-                  ),
                 ),
                 AppButton(
                   content: 'Se connecter',
