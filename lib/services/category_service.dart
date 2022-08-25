@@ -13,8 +13,9 @@ class CategoryService {
   );
 
   Future<HttpResponse> getAll() async {
-    final Response response =
-        await client.get(Uri.parse('$endpoint/categories/'));
+    final Response response = await client.get(
+      Uri.parse('$endpoint/categories/'),
+    );
     return HttpResponse(response);
   }
 }

@@ -20,33 +20,40 @@ class FoodService {
   }
 
   Future<HttpResponse> create(Food food) async {
-    final Response response = await client.post(Uri.parse('$endpoint/foods/'),
-        body: jsonEncode(food));
+    final Response response = await client.post(
+      Uri.parse('$endpoint/foods/'),
+      body: jsonEncode(food),
+    );
     return HttpResponse(response);
   }
 
   Future<HttpResponse> update(Food food) async {
-    final Response response =
-        await client.put(Uri.parse('$endpoint/foods/'), body: jsonEncode(food));
+    final Response response = await client.put(
+      Uri.parse('$endpoint/foods/${food.id}'),
+      body: jsonEncode(food),
+    );
     return HttpResponse(response);
   }
 
   Future<HttpResponse> getByCategory(int id) async {
-    final Response response =
-        await client.get(Uri.parse('$endpoint/categories/$id/foods'));
+    final Response response = await client.get(
+      Uri.parse('$endpoint/categories/$id/foods'),
+    );
     return HttpResponse(response);
   }
 
   Future<List<Food>> search(String query) async {
-    final Response res =
-        await client.get(Uri.parse('$endpoint/foods/search?q=$query'));
+    final Response res = await client.get(
+      Uri.parse('$endpoint/foods/search?q=$query'),
+    );
     final response = HttpResponse(res);
     return createFoods(response.content());
   }
 
   Future<HttpResponse> delete(int id) async {
-    final Response response =
-        await client.delete(Uri.parse('$endpoint/foods/$id'));
+    final Response response = await client.delete(
+      Uri.parse('$endpoint/foods/$id'),
+    );
     return HttpResponse(response);
   }
 }
