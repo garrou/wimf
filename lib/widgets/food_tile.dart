@@ -27,7 +27,7 @@ class FoodTile extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(5.0),
               child: ListTile(
-                leading: Text('${food.quantity}', style: textStyle),
+                leading: Text('${food.quantity}', style: titleTextStyle),
                 title: Text(food.name, style: textStyle),
                 subtitle: Text(food.formatFreezeAt(), style: textStyle),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
