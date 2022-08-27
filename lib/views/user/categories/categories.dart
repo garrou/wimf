@@ -9,6 +9,7 @@ import 'package:wimf/styles/style.dart';
 import 'package:wimf/views/user/categories/category.dart';
 import 'package:wimf/widgets/error.dart';
 import 'package:wimf/widgets/loading.dart';
+import 'package:wimf/widgets/network_image.dart';
 
 class CategoriesPage extends StatefulWidget {
   const CategoriesPage({Key? key}) : super(key: key);
@@ -88,7 +89,7 @@ class CategoryTile extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: ListTile(
-                leading: Image.asset('assets/${category.image}'),
+                leading: AppNetworkImage(image: category.image),
                 title: Text(category.name, style: textStyle),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
               ),
