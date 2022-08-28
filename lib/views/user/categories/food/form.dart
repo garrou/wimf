@@ -124,11 +124,11 @@ class _FoodFormState extends State<FoodForm> {
             ),
             AppTextField(
               textfieldController: _details,
-              label: 'Détails (commerce, marque, ...)',
+              label: 'Détails (commerce, marque, emplacement ...)',
               icon: Icon(Icons.comment_outlined,
                   color: Theme.of(context).primaryColor),
               keyboardType: TextInputType.text,
-              validator: (value) => maxLengthValidator(value, 255),
+              validator: (value) => maxLengthValidator(value, 1000),
               maxLines: 5,
             ),
             Padding(

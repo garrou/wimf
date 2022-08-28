@@ -59,17 +59,17 @@ class _SearchPageState extends State<SearchPage> {
               return const AppError();
             } else if (snapshot.hasData) {
               final s = snapshot.data!.length > 1 ? 's' : '';
-              return Column(
+              return ListView(
                 children: <Widget>[
                   Padding(
                     child: Text(
                       '${snapshot.data!.length} aliment$s',
                       style: textStyle,
+                      textAlign: TextAlign.center,
                     ),
-                    padding: const EdgeInsets.only(top: 10),
+                    padding: const EdgeInsets.only(top: 10.0),
                   ),
-                  ListView(
-                    shrinkWrap: true,
+                  Column(
                     children: <Widget>[
                       for (Food food in snapshot.data!)
                         FoodTile(categoryId: food.categoryId, food: food)

@@ -10,28 +10,25 @@ class FoodTile extends StatelessWidget {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Card(
-          elevation: 10,
-          child: InkWell(
-            onTap: () async {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      FormFoodPage(categoryId: categoryId, food: food),
-                ),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: ListTile(
-                leading: Text('${food.quantity}', style: titleTextStyle),
-                title: Text(food.name, style: textStyle),
-                subtitle: Text(food.formatFreezeAt(), style: textStyle),
-                trailing: const Icon(Icons.arrow_forward_ios_outlined),
+  Widget build(BuildContext context) => Card(
+        elevation: 10,
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) =>
+                    FormFoodPage(categoryId: categoryId, food: food),
               ),
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: ListTile(
+              leading: Text('${food.quantity}', style: titleTextStyle),
+              title: Text(food.name, style: textStyle),
+              subtitle: Text(food.formatFreezeAt(), style: textStyle),
+              trailing: const Icon(Icons.arrow_forward_ios_outlined),
             ),
           ),
         ),

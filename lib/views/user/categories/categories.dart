@@ -72,27 +72,24 @@ class CategoryTile extends StatelessWidget {
   const CategoryTile({Key? key, required this.category}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Card(
-          elevation: 10,
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      CategoryPage(category: category),
-                ),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: ListTile(
-                leading: AppNetworkImage(image: category.image),
-                title: Text(category.name, style: textStyle),
-                trailing: const Icon(Icons.arrow_forward_ios_outlined),
+  Widget build(BuildContext context) => Card(
+        elevation: 10,
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) =>
+                    CategoryPage(category: category),
               ),
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ListTile(
+              leading: AppNetworkImage(image: category.image),
+              title: Text(category.name, style: textStyle),
+              trailing: const Icon(Icons.arrow_forward_ios_outlined),
             ),
           ),
         ),
