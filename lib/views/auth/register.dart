@@ -113,7 +113,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
   void _register() async {
     HttpResponse response = await AuthService()
-        .register(_username.text, _password.text, _confirm.text);
+        .register(_username.text.trim(), _password.text.trim(), _confirm.text.trim());
 
     if (response.success()) {
       Navigator.push(

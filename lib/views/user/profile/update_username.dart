@@ -19,6 +19,7 @@ class UpdateUsernamePage extends StatefulWidget {
 class _UpdateUsernamePageState extends State<UpdateUsernamePage> {
   final _keyForm = GlobalKey<FormState>();
   final _name = TextEditingController();
+  final _confirm = TextEditingController();
 
   @override
   void initState() {
@@ -45,6 +46,20 @@ class _UpdateUsernamePageState extends State<UpdateUsernamePage> {
                 textfieldController: _name,
                 validator: (value) => lengthValidator(value, 3, 50),
               ),
+              AppTextField(
+                icon: Icon(
+                  Icons.person_outline,
+                  color: Theme.of(context).primaryColor,
+                ),
+                keyboardType: TextInputType.text,
+                label: "Nom d'utilisateur",
+                textfieldController: _confirm,
+                validator: (value) {
+                  if (_name.text != value || value!.isEmpty) {
+                    return 'Noms différents';
+                  }
+                },
+              ),
               AppButton(
                 content: "Enregistrer",
                 onPressed: _onSave,
@@ -63,7 +78,7 @@ class _UpdateUsernamePageState extends State<UpdateUsernamePage> {
 
   void _save() async {
     final HttpResponse response =
-        await UserService().updateUsername(_name.text.trim());
+        await UserService().updateUsername(_name.text.trim(), _confirm.text.trim());
 
     if (response.success()) {
       Navigator.pop(context);

@@ -19,11 +19,14 @@ class UserService {
     return HttpResponse(response);
   }
 
-  Future<HttpResponse> updateUsername(String username) async {
+  Future<HttpResponse> updateUsername(String username, String confirm) async {
     final Response response = await client.patch(
       Uri.parse('$endpoint/user/username'),
       body: jsonEncode(
-        <String, String>{'username': username},
+        <String, String>{
+          'username': username, 
+          'confirm': confirm,
+        },
       ),
     );
     return HttpResponse(response);
