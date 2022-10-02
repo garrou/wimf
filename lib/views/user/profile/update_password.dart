@@ -57,7 +57,7 @@ class _UpdatePasswordPageState extends State<UpdatePasswordPage> {
                 // ignore: body_might_complete_normally_nullable
                 validator: (value) {
                   if (_password.text != value || value!.isEmpty) {
-                    return 'Mot de passe incorrect';
+                    return 'Mots de passe différents';
                   }
                 },
                 obscureText: true,
